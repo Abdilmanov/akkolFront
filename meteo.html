@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+    <script src="https://api4.windy.com/assets/libBoot.js"></script>
+	
+  	<style>
+  		#windy {
+  			width: 100%;
+  			height: 100%;
+  		}
+		#windy #logo-wrapper {
+            top: initial;
+            bottom: 5px;
+        }
+		#windy #logo-wrapper #logo {
+            left: 60px;
+        }
+  	</style>
+  </head>
+  <body>
+    <div id="windy"></div>
+
+    <script>
+
+    const options = {
+        key: 'eYgaYzlhBxDlJgUYwasvsJOpvYa3VV5w',
+		lat: 51.995855, lon:70.952948 , zoom: 10,
+		timestamp: Date.now() + 0 * 24 * 60 * 60 * 1000,
+        hourFormat: '24h',
+
+    }
+
+    windyInit( options, windyAPI => {
+
+        const { overlays, store, broadcast, picker, utils } = windyAPI
+        
+		picker.on('pickerOpened', latLon => {
+            let { lat, lon, values, overlay } = picker.getParams()
+            // -> 50.4, 14.3, 'wind', [ U,V, ]
+
+            let windObject = utils.wind2obj( values )
+
+            console.log( windObject )
+
+        })
+       // setInterval( ()=> {
+          //  i = ( i === 3 ? 0 : i + 1 )
+          //  store.set('overlay', overlays[ i ] )
+       // }, 4000)
+		//var overlays = ['rain','wind','temp','clouds']
+		//i = 0
+		overlays.wind.setMetric('m/s')
+        // Observe the most important broadcasts
+      //  broadcast.on('paramsChanged', params => {
+
+      //      console.log('Params changed:', params )
+
+      //  })
+
+       broadcast.once('redrawFinished', () => {
+
+            picker.open({ lat: 51.995855, lon: 70.9529483 })
+            // lat: 51.995855, lon:70.952948 
+
+        })
+    })
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(52996240, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    });
+    </script>
+    <noscript>
+        <div>
+          <img src="https://mc.yandex.ru/watch/52996240" style="position:absolute; left:-9999px;" alt="" />
+        </div>
+      </noscript>
+  </body>
+</html>

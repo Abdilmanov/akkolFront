@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>2D  карта города Акколь</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css">
+    <link rel="stylesheet" href="css/2d-css/2d.css">
+    <script src="https://js.arcgis.com/4.11/"></script>
+    <script src="js/2d-js/2d.js"></script>
+  </head>
+  <body>
+	  <div id="viewDiv">
+      <div id="search"></div>
+  	  <div id="topRight">
+        <div id="measure_button" class="measure-button" title="Инструменты для измерения"></div>
+        <div id="measure_panel">
+      		<button class="action-button esri-icon-minus" id="distanceButton" type="button"
+      		  title="Измерение растояний"></button>
+      		<button class="action-button esri-icon-polygon" id="areaButton" type="button"
+      		  title="Измерение площади"></button>
+    	  </div>
+  	  </div>
+      <!-- <div id="overviewDiv">
+        <div id="extentDiv"></div>
+      </div> -->
+      <div id="main_loading">
+        <div class="cssload-thecube">
+          <div class="cssload-cube cssload-c1"></div>
+        	<div class="cssload-cube cssload-c2"></div>
+        	<div class="cssload-cube cssload-c4"></div>
+        	<div class="cssload-cube cssload-c3"></div>
+        </div>
+      </div>
+      <noscript>
+        <div>
+          <img src="https://mc.yandex.ru/watch/52996240"
+            style="position:absolute; left:-9999px;" alt="" />
+        </div>
+      </noscript>
+    </div>
+  </body>
+</html>
